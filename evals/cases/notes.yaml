@@ -1,0 +1,36 @@
+# Golden prompts for tool selection.
+# Each case: what a user might say, which tool should be called (or "none"),
+# a subset of arguments that must match (live mode), and tools that must NOT be called.
+min_accuracy: 0.9
+cases:
+  - id: find-by-topic
+    prompt: Find our notes about rotating API keys.
+    expected_tool: search_notes
+    expected_args: {query: api keys}
+  - id: find-by-tag
+    prompt: Which notes are tagged incident?
+    expected_tool: search_notes
+    expected_args: {tag: incident}
+  - id: search-phrase
+    prompt: Search the notes for postgres connection pooling.
+    expected_tool: search_notes
+  - id: open-by-id
+    prompt: Show me the full text of note n-003.
+    expected_tool: get_note
+    expected_args: {note_id: n-003}
+    must_not_call: [search_notes]
+  - id: read-by-id
+    prompt: Open n-007 and read it to me.
+    expected_tool: get_note
+    expected_args: {note_id: n-007}
+  - id: save-new
+    prompt: "Save a note titled 'Deploy checklist': run tests, run evals, tag the release."
+    expected_tool: create_note
+    expected_args: {title: Deploy checklist}
+  - id: write-down
+    prompt: "Write this down as a new note: on-call handoff moves to Tuesdays."
+    expected_tool: create_note
+    must_not_call: [search_notes]
+  - id: no-tool-math
+    prompt: What is 12 times 12?
+    expected_tool: none

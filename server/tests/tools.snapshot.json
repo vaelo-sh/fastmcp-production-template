@@ -1,0 +1,254 @@
+[
+  {
+    "annotations": {
+      "open_world_hint": false,
+      "read_only_hint": true,
+      "title": "Search notes"
+    },
+    "description": "Search or list team notes by keyword or tag. Results are ordered by id and paginated.\n\nUse when: the user wants to find, look up, or list notes about a topic or with a tag.\nDon't use for: reading one note's full text when you already have its id (use get_note).\nExample: search_notes(query=\"api keys\") or search_notes(tag=\"incident\").",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "next_cursor from a previous page. Omit for the first page."
+        },
+        "limit": {
+          "default": 10,
+          "description": "Max results per page.",
+          "maximum": 50,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "query": {
+          "default": "",
+          "description": "Keywords to match in title, body, or tags. Empty string lists everything.",
+          "maxLength": 200,
+          "type": "string"
+        },
+        "tag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Only return notes with this exact tag, e.g. 'incident'."
+        }
+      },
+      "type": "object"
+    },
+    "name": "search_notes",
+    "output_schema": {
+      "properties": {
+        "items": {
+          "items": {
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "tags": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "tags"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Pass back as `cursor` to get the next page. Null when done."
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "items",
+        "total"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "annotations": {
+      "open_world_hint": false,
+      "read_only_hint": true,
+      "title": "Get note"
+    },
+    "description": "Read one note's full text by its id.\n\nUse when: the user names a specific note id, or after search_notes to open a result.\nDon't use for: finding notes by topic (use search_notes).\nExample: get_note(note_id=\"n-003\").",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "note_id": {
+          "description": "The note id, like 'n-003'.",
+          "pattern": "^n-\\d{3,}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "note_id"
+      ],
+      "type": "object"
+    },
+    "name": "get_note",
+    "output_schema": {
+      "properties": {
+        "body": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "body",
+        "tags",
+        "created_at"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "annotations": {
+      "destructive_hint": false,
+      "idempotent_hint": false,
+      "open_world_hint": false,
+      "read_only_hint": false,
+      "title": "Create note"
+    },
+    "description": "Save a new note with a title, body, and optional tags.\n\nUse when: the user asks to save, write down, record, or add a note.\nDon't use for: editing an existing note (not supported in this example).\nExample: create_note(title=\"Deploy checklist\", body=\"1. ...\", tags=[\"release\"], idempotency_key=\"chat-42-1\").",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "description": "The note text. Plain text or Markdown.",
+          "maxLength": 20000,
+          "minLength": 1,
+          "type": "string"
+        },
+        "idempotency_key": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Any unique string. Retrying with the same key returns the first note instead of creating a duplicate."
+        },
+        "tags": {
+          "default": [],
+          "description": "Lowercase tags, e.g. ['runbook', 'database'].",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "type": "array"
+        },
+        "title": {
+          "description": "Short title, under 120 characters.",
+          "maxLength": 120,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "body"
+      ],
+      "type": "object"
+    },
+    "name": "create_note",
+    "output_schema": {
+      "properties": {
+        "created": {
+          "description": "False when an earlier call with the same idempotency_key already created it.",
+          "type": "boolean"
+        },
+        "note": {
+          "properties": {
+            "body": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "tags": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "body",
+            "tags",
+            "created_at"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "note",
+        "created"
+      ],
+      "type": "object"
+    }
+  }
+]

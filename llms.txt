@@ -1,0 +1,27 @@
+# MCP to Prod
+
+> The living FastMCP kit for shipping production MCP servers: a FastMCP 4.1.x template (stdio + Streamable HTTP), auth patterns, tool-design rules with a linter, golden-prompt evals, OpenTelemetry/logging, agent skills, and a Cloud Run deploy guide. Targets MCP spec 2026-07-28.
+
+## Start
+- [README](README.md): tree, quickstart, what's inside
+- [AGENTS.md](AGENTS.md): repo map, commands, rules for coding agents
+
+## Docs
+- [Tool design](docs/tool-design.md): naming, descriptions, schemas, errors, pagination, idempotency
+- [Auth](docs/auth.md): MCP_AUTH none/static/jwt, JWKS, Protected Resource Metadata, secrets
+- [Evals](docs/evals.md): golden prompts, offline and live modes, CI
+- [Observability](docs/observability.md): JSON logs, traces, starter alerts
+- [Deploy to Cloud Run](docs/deploy-cloud-run.md)
+- [Connect clients](docs/connect.md): Claude Code, Cursor, skills
+- [Changelog](CHANGELOG.md)
+
+## Skills
+- [mcp-add-tool](skills/mcp-add-tool/SKILL.md)
+- [mcp-tool-design](skills/mcp-tool-design/SKILL.md)
+- [mcp-auth-setup](skills/mcp-auth-setup/SKILL.md)
+- [mcp-observe](skills/mcp-observe/SKILL.md)
+
+## Optional
+- [Prompts](prompts/)
+- [Live build slice](live/README.md)
+- [Invite webhook recipe](tools/invite-webhook/README.md)

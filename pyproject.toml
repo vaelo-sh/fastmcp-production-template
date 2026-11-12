@@ -1,0 +1,41 @@
+[project]
+name = "mcp-to-prod"
+version = "2026.11"
+description = "The living FastMCP kit for shipping production MCP servers"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=4.1.8,<4.2",
+    "pydantic-settings>=2.0",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+# OpenTelemetry SDK + OTLP exporter. FastMCP itself only needs the OTel API.
+otel = [
+    "opentelemetry-sdk>=1.25",
+    "opentelemetry-exporter-otlp>=1.25",
+]
+
+[project.scripts]
+mcp-to-prod = "app.__main__:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "pyyaml>=6",
+    "jsonschema>=4",
+    "opentelemetry-sdk>=1.25",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["server/app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["server/tests", "live/finished", "tools/invite-webhook"]

@@ -1,0 +1,20 @@
+# Local server + Jaeger for traces:  docker compose -f server/compose.yaml up --build
+# MCP endpoint: http://localhost:8080/mcp   Traces: http://localhost:16686
+services:
+  mcp:
+    build:
+      context: ..
+      dockerfile: server/Dockerfile
+    ports: ["8080:8080"]
+    environment:
+      MCP_ENV: dev
+      MCP_AUTH: static
+      MCP_DEV_TOKEN: local-dev-token-change-me-0123456789
+      OTEL_SERVICE_NAME: mcp-to-prod
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+    depends_on: [jaeger]
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports: ["16686:16686", "4317:4317"]

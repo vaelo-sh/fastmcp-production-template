@@ -1,0 +1,116 @@
+{
+  "artifacts": [
+    {
+      "description": "Add a new tool to a FastMCP server the production way, as one change with the tool, a test, a golden eval case, and an updated schema snapshot. Use when asked to add, create, or expose a new MCP tool.",
+      "files": [
+        "SKILL.md"
+      ],
+      "id": "mcp-add-tool",
+      "kind": "skill",
+      "name": "mcp-add-tool",
+      "path": "skills/mcp-add-tool",
+      "sha256": "1ecdcab395d163d16644945fef144fdc2ff0dd6a1ab4042517876f47d3bb10be",
+      "tags": [
+        "fastmcp",
+        "tools",
+        "testing",
+        "evals"
+      ],
+      "version": "2026.11"
+    },
+    {
+      "description": "Choose and wire authentication for a FastMCP server using the MCP_AUTH switch (none, static dev token, or JWT via JWKS) and publish Protected Resource Metadata for OAuth. Use when securing an HTTP MCP server, connecting an identity provider such as Supabase, Auth0, Clerk or WorkOS, or debugging 401s.",
+      "files": [
+        "SKILL.md"
+      ],
+      "id": "mcp-auth-setup",
+      "kind": "skill",
+      "name": "mcp-auth-setup",
+      "path": "skills/mcp-auth-setup",
+      "sha256": "d0b39d017755a99e87d478617c5a64913cb8f1dd3ff911a73915416c48468213",
+      "tags": [
+        "fastmcp",
+        "auth",
+        "oauth",
+        "security"
+      ],
+      "version": "2026.11"
+    },
+    {
+      "description": "Turn on and verify OpenTelemetry tracing and structured JSON logs for a FastMCP server, and set up starter alerts. Use when adding observability, debugging slow or failing tool calls, or preparing a server for production.",
+      "files": [
+        "SKILL.md"
+      ],
+      "id": "mcp-observe",
+      "kind": "skill",
+      "name": "mcp-observe",
+      "path": "skills/mcp-observe",
+      "sha256": "c6992689fa683eace5b71d767f58988051cb880d6d6b6f846841acef300e6c14",
+      "tags": [
+        "fastmcp",
+        "observability",
+        "opentelemetry",
+        "logging",
+        "alerts"
+      ],
+      "version": "2026.11"
+    },
+    {
+      "description": "Review MCP tool definitions for agent tool-selection quality (names, descriptions, schemas, errors, pagination, idempotency) and propose concrete fixes. Use when reviewing, renaming, or rewriting tool descriptions, or when evals show the wrong tool being picked.",
+      "files": [
+        "SKILL.md"
+      ],
+      "id": "mcp-tool-design",
+      "kind": "skill",
+      "name": "mcp-tool-design",
+      "path": "skills/mcp-tool-design",
+      "sha256": "47c0c699161f8d795805bcbf468726787c3daddc1b1e65b5cb0dfe9a7f1f698f",
+      "tags": [
+        "fastmcp",
+        "tools",
+        "review"
+      ],
+      "version": "2026.11"
+    },
+    {
+      "description": "Rewrite one MCP tool description so agents pick it for the right requests and skip it for the wrong ones.",
+      "id": "review-tool-description",
+      "kind": "prompt",
+      "name": "review-tool-description",
+      "path": "prompts/review-tool-description.md",
+      "sha256": "aa03e422bd66d19b6a089242937ac4ee2fb071be9b4538071c58bb0f6822c330",
+      "tags": [
+        "tools",
+        "review"
+      ],
+      "version": "2026.11"
+    },
+    {
+      "description": "Sort a FastMCP or MCP spec release into breaks-us, new-capability, or ignore for the monthly changelog.",
+      "id": "triage-upstream-release",
+      "kind": "prompt",
+      "name": "triage-upstream-release",
+      "path": "prompts/triage-upstream-release.md",
+      "sha256": "78fedd15088d508f442de3d68443917fac271a4ddf362d277bb06c505730198d",
+      "tags": [
+        "changelog",
+        "maintenance"
+      ],
+      "version": "2026.11"
+    },
+    {
+      "description": "Draft golden eval cases (prompt, expected tool, expected args, must-not-call) for an MCP server's tools.",
+      "id": "write-golden-cases",
+      "kind": "prompt",
+      "name": "write-golden-cases",
+      "path": "prompts/write-golden-cases.md",
+      "sha256": "0bba97baea93a429b9167fac2760b5cafd1a9a6640788e67b85d8f5083ee93fd",
+      "tags": [
+        "evals",
+        "testing"
+      ],
+      "version": "2026.11"
+    }
+  ],
+  "schema": 1
+}

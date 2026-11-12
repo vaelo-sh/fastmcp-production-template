@@ -1,0 +1,9 @@
+min_accuracy: 1.0
+cases:
+  - id: find-postgres
+    prompt: Find our notes about postgres pooling.
+    expected_tool: search_notes
+    expected_args: {query: postgres}
+  - id: no-tool
+    prompt: What is 12 times 12?
+    expected_tool: none

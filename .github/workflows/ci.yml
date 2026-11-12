@@ -1,0 +1,61 @@
+# CI for MCP to Prod. Tests, tool lint, and offline evals on every push/PR.
+# Live evals run nightly or on demand, only when an API key secret is configured.
+name: ci
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 6 * * *"   # nightly live evals
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - name: Tests
+        run: uv run pytest -q
+      - name: Tool lint + schema snapshot
+        run: uv run python scripts/check_tools.py
+      - name: Skills/prompts manifest is current
+        run: uv run python scripts/build_manifest.py --check
+      - name: Evals (offline, no keys)
+        run: uv run python evals/run.py --mode offline
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: eval-offline
+          path: evals/results/latest.json
+
+  evals-live:
+    # Nightly or manual only (costs API tokens).
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    needs: test
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      EVAL_MODEL: ${{ vars.EVAL_MODEL }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - name: Evals (live)
+        if: env.EVAL_MODEL != '' && (env.ANTHROPIC_API_KEY != '' || env.OPENAI_API_KEY != '')
+        run: uv run python evals/run.py --mode live
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: eval-live
+          path: evals/results/latest.json
+          if-no-files-found: ignore
