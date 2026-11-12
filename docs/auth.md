@@ -46,7 +46,7 @@ subscriptions: `trialing`, `active`) and deny everything else. Never unlock clie
 
 ## Secrets
 - Env only. `.env` is git-ignored, and `.env.example` has no values.
-- Prod: your platform's secret manager (Cloud Run: Secret Manager → `--set-secrets`).
+- Prod: `fly secrets` is the default production secret store. Cloud Run Secret Manager (`--set-secrets`) is an untested alternative.
 - Logs never contain tokens. The JSON formatter redacts token-like fields, and the request log omits arguments.
 - Rotate `MCP_DEV_TOKEN` by deploying the new value, then revoking the old one in clients.
 

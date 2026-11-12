@@ -31,7 +31,7 @@ That installs everything, runs the tests, and starts the server over stdio and c
 - **Tool design** rules plus a linter and schema snapshot. See [docs/tool-design.md](docs/tool-design.md).
 - **Evals**: offline without keys, live with a key. See [docs/evals.md](docs/evals.md).
 - **Observability**: JSON logs with trace IDs, OpenTelemetry spans, starter alerts. See [docs/observability.md](docs/observability.md).
-- **Deploy**: [docs/deploy-cloud-run.md](docs/deploy-cloud-run.md).
+- **Deploy**: [docs/deploy-fly.md](docs/deploy-fly.md) (default). [Cloud Run](docs/deploy-cloud-run.md) is an untested alternative.
 - **Clients**: [docs/connect.md](docs/connect.md).
 
 Make it yours: rename `server/app/tools/notes.py`, keep the rules, and run `scripts/check_tools.py`.

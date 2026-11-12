@@ -14,7 +14,7 @@ upstream, what we changed, and what you need to do.
 - FastMCP 4.2 is in alpha (requires Python 3.11 and reworks the skills API). We stay on 4.1.x until it ships.
 
 ### What we changed
-- First release: template, auth (none/static/jwt + PRM), tool lint + snapshot, evals (offline/live), logs + traces, 4 skills, 3 prompts, Cloud Run guide, live-build slice.
+- First release: template, auth (none/static/jwt + PRM), tool lint + snapshot, evals (offline/live), logs + traces, 4 skills, 3 prompts, Fly guide (default, tested) and an untested Cloud Run guide, live-build slice.
 - Not enabled by default: `ResponseLimitingMiddleware`, because in 4.1.x it drops tool output schemas.
 
 ### Action needed by you
