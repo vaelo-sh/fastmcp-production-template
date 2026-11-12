@@ -1,25 +1,21 @@
-MCP to Prod License
+MIT License
 
-Copyright (c) 2026 VAELO, LLC. All rights reserved.
+Copyright (c) 2026 VAELO, LLC
 
-This kit is licensed, not sold, to the individual or single organization that
-bought it ("you").
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-You may:
-- use, copy and modify the kit to build and run your own MCP servers, including
-  commercial products and client work;
-- ship the servers you build with it, without attribution.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-You may not:
-- share, resell, sublicense or publish the kit itself (code, skills, prompts,
-  evals or docs), in original or modified form, as a kit, template, course or
-  repository;
-- give access to the private repository or your license key to anyone outside
-  your organization.
-
-Your license to the code you already have does not expire. Access to updates
-and the hosted connector lasts for the term you paid for.
-
-THE KIT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL
-VAELO, LLC BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM
-THE KIT OR ITS USE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
