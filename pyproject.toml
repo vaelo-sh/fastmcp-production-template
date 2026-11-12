@@ -2,6 +2,7 @@
 name = "mcp-to-prod"
 version = "2026.11"
 description = "The living FastMCP kit for shipping production MCP servers"
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
     "fastmcp>=4.1.8,<4.2",
@@ -38,4 +39,4 @@ packages = ["server/app"]
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
-testpaths = ["server/tests", "live/finished", "tools/invite-webhook"]
+testpaths = ["server/tests", "live/finished"]

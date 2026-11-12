@@ -24,4 +24,3 @@
 ## Optional
 - [Prompts](prompts/)
 - [Live build slice](live/README.md)
-- [Invite webhook recipe](tools/invite-webhook/README.md)
