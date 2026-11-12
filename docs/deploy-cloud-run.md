@@ -1,6 +1,8 @@
 # Deploy to Google Cloud Run
 
-The one deploy guide in v1. Written, not executed: check each command against current
+Untested. Community path. Fly is the default: see [deploy-fly.md](deploy-fly.md).
+
+Written, not executed: check each command against current
 [Cloud Run docs](https://cloud.google.com/run/docs/deploying) before you run it.
 
 **Why Cloud Run:** it runs `server/Dockerfile` unchanged and scales instances on its own. Under the
@@ -58,6 +60,5 @@ Behind a transaction pooler (Supabase's pooler / pgBouncer): **disable prepared 
 **require SSL**, and **set explicit connect and statement timeouts**. Otherwise migrations can
 hang silently. Keep migrations idempotent (`IF NOT EXISTS`, `DO $$ … $$` blocks).
 
-## Alternatives (no guide in v1)
-Any container host works with the same image. Fly.io, for example, runs it as a long-lived
-process (`PORT` env, `/health` check).
+## See also
+Fly is the default, tested path: [deploy-fly.md](deploy-fly.md). This page is an untested alternative.

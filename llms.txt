@@ -1,6 +1,6 @@
 # MCP to Prod
 
-> The living FastMCP kit for shipping production MCP servers: a FastMCP 4.1.x template (stdio + Streamable HTTP), auth patterns, tool-design rules with a linter, golden-prompt evals, OpenTelemetry/logging, agent skills, and a Cloud Run deploy guide. Targets MCP spec 2026-07-28.
+> The living FastMCP kit for shipping production MCP servers: a FastMCP 4.1.x template (stdio + Streamable HTTP), auth patterns, tool-design rules with a linter, golden-prompt evals, OpenTelemetry/logging, agent skills, and a Fly guide. Targets MCP spec 2026-07-28.
 
 ## Start
 - [README](README.md): tree, quickstart, what's inside
@@ -11,7 +11,8 @@
 - [Auth](docs/auth.md): MCP_AUTH none/static/jwt, JWKS, Protected Resource Metadata, secrets
 - [Evals](docs/evals.md): golden prompts, offline and live modes, CI
 - [Observability](docs/observability.md): JSON logs, traces, starter alerts
-- [Deploy to Cloud Run](docs/deploy-cloud-run.md)
+- [Fly guide](docs/deploy-fly.md)
+- [Cloud Run](docs/deploy-cloud-run.md) (untested)
 - [Connect clients](docs/connect.md): Claude Code, Cursor, skills
 - [Changelog](CHANGELOG.md)
 

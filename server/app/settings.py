@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     # Transport
     transport: Literal["stdio", "http"] = "stdio"
     host: str = "127.0.0.1"
-    # Cloud Run (and most container hosts) inject PORT; it wins over MCP_PORT.
+    # PORT wins over MCP_PORT when the image or a host sets it.
     port: int = Field(8000, validation_alias=AliasChoices("PORT", "MCP_PORT"))
     path: str = "/mcp"
     stateless_http: bool = True
