@@ -1,10 +1,10 @@
-# MCP to Prod
+# FastMCP production template
 the living FastMCP kit for shipping production MCP servers
 
-Want an expert in your agent while you build? → [vaelo.sh/mcp-to-prod](https://vaelo.sh/mcp-to-prod)
+Want an expert in your agent while you build? → [vaelo.sh/connector](https://vaelo.sh/connector)
 
 ```
-mcp-to-prod/
+fastmcp-production-template/
 ├── server/      FastMCP production template (example: 3 notes tools)
 ├── skills/      agent skills for Cursor + Claude Code
 ├── prompts/     reusable prompts
